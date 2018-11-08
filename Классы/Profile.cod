@@ -14,15 +14,7 @@ inclass private
   end;
 
   proc GetSessionInfo;
-    var MineInfo: string[];
-    MineInfo[1] = '<cf:$FF0000><s->Copyright © 2010..2017 <b+>ООО ТБ.Бюджет<b->';
-    MineInfo[2] = '107076, г. Москва, ул.Матросская Тишина,';
-    MineInfo[3] = 'д.23,корп.1 офис 67';
-    MineInfo[4] = 'Тел: (495) 720-67-81, (499) 268-29-91';
-    MineInfo[5] = 'E-mail: info@tb-b.ru   Сайт: www.tb-b.ru';
-    MineInfo[6] = ' <s.><cf.>';
-    MineInfo[7] = 'Версия проекта ' + ClassProject + ' : ' + Str(КЛАДР.Константы.ПолучитьВерсиюПроекта, '0.000');
-    AddSessionInfo(СИС2.Константы.ЗаголовокИнформацииОРелизахТББ, СИС2.СтроковыеФункции.МассивСтрокВТекст(MineInfo));
+    AddSessionInfo(СИС2.Константы.ЗаголовокИнформацииОРелизахТББ, 'Версия проекта ' + ClassProject + ' : ' + Str(Константы.ПолучитьВерсиюПроекта, '0.000'));
   end;
 
 end
