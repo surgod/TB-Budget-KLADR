@@ -28,4 +28,10 @@
 доступа к онлайн фиас
 
 
+6) √де искать временные файлы
+%windir%+temp
+%SystemRoot%+temp
+%TEMP% в user и SysteM
+%temp% в user и SysteM
+--USERPROFILE
 
