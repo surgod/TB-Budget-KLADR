@@ -1,0 +1,44 @@
+http://www.celitel.info/klad/wsh/wsh.htm
+Windows Script Host (WSH) Общие сведения
+
+http://www.celitel.info/klad/wsh/ex_environment.htm
+Windows Script Host (WSH). Примеры.
+Операции с переменными окружения (переменными среды).
+
+http://www.celitel.info/klad/wsh/wmi_connect.htm
+Подключение к WMI
+
+http://www.script-coding.com
+Разработка скриптов
+Программирование на макроязыках и в скриптовых средах, разработка скриптов
+
+http://www.script-coding.com/WMI.html
+Введение в WMI
+Основы технологии Windows Management Instrumentation (WMI)
+
+http://www.script-coding.com/WSH/WshShell.html
+WshShell
+Описание объекта WshShell, его свойств и методов
+
+https://docs.microsoft.com/ru-ru/windows/desktop/CIMWin32Prov/win32-environment
+Win32_Environment class
+Represents an environment or system environment setting on a Windows computer system.
+
+http://www.robvanderwoude.com/vbstech_data_environment.php#Win32_Environment
+VBScript Scripting Techniques: Environment Variables
+Working with environment variables in VBScript
+
+http://scriptcoding.ru/2013/06/27/wscript-shell-environment/
+Объект WScript.Shell свойство Environment - Переменные окружения Windows | scriptcoding.ru
+Статья рассматривает переменные окружения Windows, в том числе и свойство Environment объекта WScript.Sh
+
+http://programna1c.narod.ru/docs/WSH/1C_WSH_WshEnvironment.html
+1С и Объект WshEnvironment
+Примеры использования в 1С объекта WshEnvironment - доступ к переменным среды Windows
+
+https://www.java.com/ru/download/help/
+Центр справки Java
+Центр справки Java - доступ к справке о Java и запуске апплетов Java
+
+https://www.java.com/ru/download/help/path.xml
+Как задать или настроить системную переменную PATH?
