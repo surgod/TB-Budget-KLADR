@@ -83,3 +83,21 @@ vReg.GetStringValue(HKEY_CURRENT_USER, "Software\SomeKey", "SomeValue", vVal);
 strComputer = "."
 Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
 "winmgmts:\\.\root\cimv2"
+
+интерфйс для класса wmienvironment.
+
+проблема, что владелец environment не известен заранее.
+поэтому, для хранения енв необходимо изменить структуру для хранения.
+
+при чтении пременной - возвращается массив значений
+
+func create
+func getenvvar(envvar, [envowner])-> string[]
+func getenvowner - string[]
+proc setenvvar(envvarname, envvarvalue, [envowner])
+proc remenvvar(envvarname, [envowner])
+
+
+для хранения создаем _envowners: string[];
+
+vj;tn
