@@ -2,3 +2,9 @@
 <Properties Version="1">
   <Property Name="Title" Value="Клиентские классы"/>
 </Properties>
+<Items>
+  <Item Name="Profile"/>
+  <Item Name="Константы"/>
+  <Item Name="Библио"/>
+  <Item Name="АО"/>
+</Items>
