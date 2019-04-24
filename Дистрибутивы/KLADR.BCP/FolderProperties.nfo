@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Properties Version="1"/>
+<Items>
+  <Item Name="socrbase_bcp_fmt.xml"/>
+  <Item Name="kladr_bcp_fmt.xml"/>
+  <Item Name="street_bcp_fmt.xml"/>
+</Items>

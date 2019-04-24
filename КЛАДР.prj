@@ -8,6 +8,8 @@
   <Groups>
     <Group Name="Классы" Type="Classes" Disabled="False"/>
     <Group Name="СерверныеКлассы" Type="Classes" Disabled="False"/>
+    <Group Name="АО" Type="Classes" Disabled="False"/>
+    <Group Name="Заглушки" Type="Classes" Disabled="False"/>
     <Group Name="Дистрибутивы" Type="Other" Disabled="False"/>
     <Group Name="Shared" Type="Other" Disabled="False"/>
   </Groups>

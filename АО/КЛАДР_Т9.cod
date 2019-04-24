@@ -1,0 +1,35 @@
+class inherited АдресК.ФИАС_XML_RPC "Доступ к адресным объектам КЛАДРа базового проекта";
+-- АО представлены в формате классов записей Т9:
+--   Базовый.Классификаторы.РегионИГород
+--   Базовый.Классификаторы.Улица
+--   Базовый.Классификаторы.Улица
+--   импорт КЛАДР в ИБ базового проекта Т9 производится в средствами класса
+--   Базовый.Сервис.блЗагрузкаКлассификаторов
+
+
+inclass
+
+  --WaitingAsync: КЛАДР.AsyncResult_stub; -- заглушка вместо WebTL.HTTPAsync
+
+  func CreateEx(URL: String): КЛАДР_Т9;
+    var Mapper: TUL.XMLMapper;
+    var FileObj:AutoObject;
+    Result = WebTL.XMLRPC_Proxy.CreateEx(URL);
+    --Загрузка справочника статусов домов
+    FileObj = AutoObject.Create("Msxml2.DOMDocument.6.0");
+    СИС2.Файл.СинхронизироватьФайлы(BaseInfo.ProjectByName["АдресК"].Folder + "\\Shared\\AS_ESTSTAT.XML",
+                                    SessionInfo.LocalFolder + "\\AS_ESTSTAT.XML");
+    FileObj.load(SessionInfo.LocalFolder + "\\AS_ESTSTAT.XML");
+    Mapper = АдресК.Библио.EstStatMapper;
+    Result.СтатДомов = Mapper.ParseNode(FileObj.documentElement).EstateStatus as Storage[];
+    Result.SubCache = Storage.Create;
+  end;
+
+inobject
+
+  -- перекрытие метода WebTL.XMLRPC_Proxy._Execute_single
+  func _Execute_single(Method:string;Params:Variant[]):Variant;
+    --Result = SimpleCall(URL, Method, Params)[1];
+  end;
+
+end
