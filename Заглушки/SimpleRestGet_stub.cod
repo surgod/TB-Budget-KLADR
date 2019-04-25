@@ -1,0 +1,26 @@
+class inherited WebTL.SimpleRestGet 'Заглушка класса WebTL.SimpleRestGet';
+
+inclass
+
+  func CreateEx(aHost:string; aMapper:Variant): SimpleRestGet_stub;
+    result = Create;
+    result.qQuery = Query.Create;
+    --result.stQuery = storage.Create;
+  end;
+
+inobject
+
+  var qQuery: Query;
+  var stQuery: Storage[];
+
+  func Вызвать synonym Call(Params:Variant[]): Variant;
+  --* Params - должне содержать 1 параметр - URL
+--    var AsyncCla: Class;
+--    Result = self.DoRequest(self.host + Params[1]);
+--
+--    AsyncCla = FindClass('XMLRPC.HTTPAsync');
+--    if result.InheritsFrom(AsyncCla) then
+--       Result.id = self.host + Params[1];
+  end;
+
+end

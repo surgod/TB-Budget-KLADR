@@ -1,0 +1,19 @@
+class "Выборка по запросу";
+
+inclass
+  func CreateEx: КЛАДР_ВыборкаПоЗапросу;
+    result = Create;
+    result.qQuery = Query.Create;
+    --result.stQuery = storage.Create;
+  end;
+
+inobject
+
+  var qQuery: Query;
+  var stQuery: Storage[];
+
+  func Вызвать synonym Call(Params:Variant[]): Variant;
+  --* Params - должне содержать 1 параметр - URL
+  end;
+
+end

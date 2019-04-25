@@ -1,0 +1,7 @@
+class inherited WebTL.HTTPAsync 'Заглушка класса WebTL.HTTPAsync';
+
+inclass
+
+inobject
+
+end

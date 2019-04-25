@@ -1,4 +1,4 @@
-class inherited TUL.AsyncResult "Заглушка класса TUL.AsyncResult";
+class inherited TUL.AsyncResult 'Заглушка класса TUL.AsyncResult';
 
 inclass
 

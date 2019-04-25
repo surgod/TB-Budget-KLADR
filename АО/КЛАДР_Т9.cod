@@ -1,4 +1,5 @@
 class inherited АдресК.ФИАС_XML_RPC "Доступ к адресным объектам КЛАДРа базового проекта";
+--class inherited DynamicObject "Доступ к адресным объектам КЛАДРа базового проекта";
 -- АО представлены в формате классов записей Т9:
 --   Базовый.Классификаторы.РегионИГород
 --   Базовый.Классификаторы.Улица
@@ -9,13 +10,16 @@ class inherited АдресК.ФИАС_XML_RPC "Доступ к адресным объектам КЛАДРа базового 
 
 inclass
 
-  --WaitingAsync: КЛАДР.AsyncResult_stub; -- заглушка вместо WebTL.HTTPAsync
+  WaitingAsync: КЛАДР.HTTPAsync_stub; -- заглушка вместо WebTL.HTTPAsync
 
   func CreateEx(URL: String): КЛАДР_Т9;
     var Mapper: TUL.XMLMapper;
     var FileObj:AutoObject;
     Result = WebTL.XMLRPC_Proxy.CreateEx(URL);
+    --Result.URL = URL;
     --Загрузка справочника статусов домов
+    Result.BldFetch = SimpleRestGet_stub.CreateEx('list/', BuildingsMapper);
+    Result.GetAreasFunc = XMLRPCFunc_stub.CreateEx(URL, "GetAreas", false);
     FileObj = AutoObject.Create("Msxml2.DOMDocument.6.0");
     СИС2.Файл.СинхронизироватьФайлы(BaseInfo.ProjectByName["АдресК"].Folder + "\\Shared\\AS_ESTSTAT.XML",
                                     SessionInfo.LocalFolder + "\\AS_ESTSTAT.XML");
@@ -27,9 +31,74 @@ inclass
 
 inobject
 
+  --var URL:String;
+  --var rest_URL: String;
+  var BldFetch: SimpleRestGet_stub; -- заглушка для WebTL.SimpleRestGet
+  var QueryMapper: XMLRPCFunc_stub; -- заглушка для WebTL.XMLRPCFunc
+  --var SubCache: Storage;
+
   -- перекрытие метода WebTL.XMLRPC_Proxy._Execute_single
   func _Execute_single(Method:string;Params:Variant[]):Variant;
     --Result = SimpleCall(URL, Method, Params)[1];
   end;
+
+
+
+
+  proc PollBuildings(AO_GUID:String);
+  end;
+
+  func GetBuildings(AO_GUID:String):Storage[];
+    if AO_GUID='' then
+      return [];
+    fi;
+    PollBuildings(AO_GUID);
+    Result = BldFetch.stQuery as Storage[];
+  end;
+
+  func SubB(aoguid: String): Variant;
+    return BldFetch.Call([aoguid]);
+  end;
+
+  func SubO(aoguid: String): Variant;
+    if not SubCache.FieldExists(aoguid) then
+      SubCache.SetField(aoguid, BldFetch.Call([aoguid]));
+    fi;
+    Result = SubCache.GetField(aoguid);
+    if SubCache.Count > 100 then
+       SubCache.DeleteAllFields;
+    fi;
+  end;
+
+  func BldInfo(aoguid: String; bldguid: String): Variant;
+  end;
+
+  func SearchAO(filter_by: Storage): Variant;
+  var Name_like: String;
+  var filter_1: Storage;
+  var i: Integer;
+    Name_like = '';
+    filter_1 = Storage.Create;
+    for i = 1..filter_by.Count do
+      if filter_by.IndexByNumber[i] = "name_like" then
+         Name_like = filter_by.ItemsByNumber[i];
+      else
+         filter_1.SetField(filter_by.IndexByNumber[i], filter_by.ItemsByNumber[i]);
+      end;
+    od;
+--    if filter_by.FieldExists('name_like') then
+--       Name_like = filter_by.GetField('name_like');
+--       filter_by.DeleteField('name_like');
+--    fi;
+    return BldFetch.Call([filter_by, Name_like]);
+  end;
+
+
+  func AOInfo(aoguid: String): Storage;
+  end;
+
+
+
+
 
 end
