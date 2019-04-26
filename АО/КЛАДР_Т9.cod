@@ -15,8 +15,9 @@ inclass
   func CreateEx(URL: String): КЛАДР_Т9;
     var Mapper: TUL.XMLMapper;
     var FileObj:AutoObject;
-    Result = WebTL.XMLRPC_Proxy.CreateEx(URL);
-    --Result.URL = URL;
+    --Result = WebTL.XMLRPC_Proxy.CreateEx(URL) as КЛАДР.КЛАДР_Т9;
+    Result = Create;
+    Result.URL = URL;
     --Загрузка справочника статусов домов
     Result.BldFetch = SimpleRestGet_stub.CreateEx('list/', BuildingsMapper);
     Result.GetAreasFunc = XMLRPCFunc_stub.CreateEx(URL, "GetAreas", false);
@@ -86,10 +87,6 @@ inobject
          filter_1.SetField(filter_by.IndexByNumber[i], filter_by.ItemsByNumber[i]);
       end;
     od;
---    if filter_by.FieldExists('name_like') then
---       Name_like = filter_by.GetField('name_like');
---       filter_by.DeleteField('name_like');
---    fi;
     return BldFetch.Call([filter_by, Name_like]);
   end;
 

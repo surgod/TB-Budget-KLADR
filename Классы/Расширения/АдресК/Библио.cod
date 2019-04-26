@@ -1,0 +1,31 @@
+extends АдресК.Библио;
+-- Библиотечные константы и функции
+
+inclass public
+
+func UseKladr: Logical; -- использование кладр в автономном режиме
+  result = not extended UseFiosm and baseinfo.projectbyname['КЛАДР'] <> nil;
+end;
+
+func GetFIASObj:DynamicObject;
+  if UseKladr :
+    Result = GetKladrObj;
+  else
+    Result = extended GetFIASObj;
+  fi;
+end;
+
+func GetKladrObj:DynamicObject;
+  Result = КЛАДР_Т9.CreateEx(cnstUrlKladrT9);
+  Result.rest_URL = cnstUrlKladrT9;
+end;
+
+func UseFiosm: Logical;
+  Result = extended UseFiosm or baseinfo.projectbyname['КЛАДР'] <> nil;
+  --Result = Result or UseKladr
+end;
+
+inclass private
+
+const cnstUrlKladrT9: string = 'T9:\\КЛАДР';
+end
