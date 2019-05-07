@@ -21,6 +21,14 @@ inobject
 --    AsyncCla = FindClass('XMLRPC.HTTPAsync');
 --    if result.InheritsFrom(AsyncCla) then
 --       Result.id = self.host + Params[1];
+
+-- возвращает хранилище с результатом запроса
+-- формат хранилища -
+--
+-- возвращает код АО по кладру - он же guid
+-- или
+
+
   end;
 
 end

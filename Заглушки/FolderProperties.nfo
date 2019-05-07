@@ -2,3 +2,9 @@
 <Properties Version="1">
   <Property Name="Title" Value="Заглушки базовых классов"/>
 </Properties>
+<Items>
+  <Item Name="AsyncResult_stub"/>
+  <Item Name="HTTPAsync_stub"/>
+  <Item Name="XMLRPCFunc_stub"/>
+  <Item Name="SimpleRestGet_stub"/>
+</Items>
